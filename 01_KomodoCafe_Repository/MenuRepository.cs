@@ -8,6 +8,7 @@ namespace _01_KomodoCafe_Repository
 {
     class MenuRepository
     {
-        //crud
+        //crud create read update delete
+
     }
 }

@@ -1,0 +1,7 @@
+C:\Users\dougb\source\repos\01_KomodoCafe\01_KomodoCafe_Console\bin\Debug\01_KomodoCafe_Console.exe.config
+C:\Users\dougb\source\repos\01_KomodoCafe\01_KomodoCafe_Console\bin\Debug\01_KomodoCafe_Console.exe
+C:\Users\dougb\source\repos\01_KomodoCafe\01_KomodoCafe_Console\bin\Debug\01_KomodoCafe_Console.pdb
+C:\Users\dougb\source\repos\01_KomodoCafe\01_KomodoCafe_Console\obj\Debug\01_KomodoCafe_Console.csproj.AssemblyReference.cache
+C:\Users\dougb\source\repos\01_KomodoCafe\01_KomodoCafe_Console\obj\Debug\01_KomodoCafe_Console.csproj.CoreCompileInputs.cache
+C:\Users\dougb\source\repos\01_KomodoCafe\01_KomodoCafe_Console\obj\Debug\01_KomodoCafe_Console.exe
+C:\Users\dougb\source\repos\01_KomodoCafe\01_KomodoCafe_Console\obj\Debug\01_KomodoCafe_Console.pdb
