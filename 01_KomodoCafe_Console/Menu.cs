@@ -27,9 +27,8 @@ namespace _01_KomodoCafe
 
         }
 
-        public static implicit operator Menu(_01_KomodoCafe_Console.Menu v)
+        public Menu()
         {
-            throw new NotImplementedException();
         }
 
 

@@ -1,5 +1,4 @@
 ﻿using _01_KomodoCafe;
-using _01_KomodoCafe_Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,15 +9,12 @@ using System.Threading.Tasks;
 namespace _01_KomodoCafe_Console
 {
 
-    public class ProgramUI
+    public class Menu
     {
-        
-        
-            private readonly MenuRepo _repo = new MenuRepo();
-
-        //public string mealName { get; private set; }
-
-        public void Run()
+        public class ProgramUI
+        {
+            private readonly Menu _repo = new Menu();
+            public void Run()
             {
                 Menu();
             }
@@ -118,7 +114,7 @@ namespace _01_KomodoCafe_Console
             {
                 Console.Clear();
 
-               Menu content = new Menu();
+                Menu content = new Menu();
 
                 bool isValidTitle = false;
                 while (!isValidTitle)
@@ -134,7 +130,7 @@ namespace _01_KomodoCafe_Console
 
                     else
                     {
-                        content.MealName = mealName;
+                        content.
                         isValidTitle = true;
                     }
                 }
@@ -150,7 +146,7 @@ namespace _01_KomodoCafe_Console
 
 
     }
-
+}
 
 
 

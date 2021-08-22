@@ -1,5 +1,4 @@
-﻿using _01_KomodoCafe;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -15,7 +14,7 @@ namespace _01_KomodoCafe_Repository
         public bool ProductName { get; private set; } 
         //crud create read update delete
         //create
-        public bool AddContentToDirectory(Menu items)
+        public bool AddContentToDirectory(MenuRepo items)
         {
             int startingCount = _menuDirectory.Count;
 
@@ -29,7 +28,7 @@ namespace _01_KomodoCafe_Repository
 
         //read
 
-        public List<Menu> GetItems()
+        public List<MenuRepo> GetItems()
         {
             return _menuDirectory;
         }
@@ -37,14 +36,13 @@ namespace _01_KomodoCafe_Repository
 
 
 
-        public Menu GetMealByName(string mealName)
+        MenuRepo GetMealByName(string mealName)
         {
-            //List<Menu>mealNames = new List<Menu>();
-            foreach (Menu items in _menuDirectory)
+            foreach (MenuRepo item in _01_menuDirectory)
             {
-                if (items.MealName == mealName)
+                if (item.MealName == mealName)
                 {
-                    return items;
+                    return item;
                 }
             }
             return null;
@@ -53,7 +51,6 @@ namespace _01_KomodoCafe_Repository
 
         public bool UpdateExistingContent(string originalTitle, Menu newContent)
         {
-            
             Menu oldContent = GetMealByName(originalTitle);
 
             if (oldContent != null)
@@ -75,7 +72,7 @@ namespace _01_KomodoCafe_Repository
 
         //delete
 
-        public bool DeleteExistingContent(Menu existingContent)
+        public bool DeleteExistingContent(MenuRepo existingContent)
         {
             bool deleteResult = _menuDirectory.Remove(existingContent);
             return deleteResult;
