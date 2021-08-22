@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace _01_KomodoCafe_Console
@@ -10,71 +11,111 @@ namespace _01_KomodoCafe_Console
     {
         public void Run()
         {
-            Console.Title = "Menu";
-            Console.WriteLine("[1] Full Meal ");
-            Console.WriteLine("[2] Partial Meal");
-            Console.WriteLine("[3] Buffet");
-            Console.WriteLine("[4] Settings");
+            SeedContent();
 
-            var input = Console.ReadLine();
-
-            if (input == "1")
-            {
-                // full meal [1]
-                Fullmeal();
-
-            }
-
-            if (input == "2")
-            {
-                // partial meal [2]
-                Partialmeal();
-            }
-
-            if (input == "3")
-            {
-                // buffet [3]
-                Buffet();
-            }
-
-            if (input == "4")
-            {
-                // settings [4]
-                Settings();
-            }
-
+            Menu();
         }
-        public static void Fullmeal()
+        public void SeedContent()
         {
-            Console.Clear();
-            Console.WriteLine("Full meal #1 comes with all the meat and all the trimmings!");
-            Console.ReadLine();
-        }
+            Console.WriteLine("Seeding....");
 
-        public static void Partialmeal()
+            Menu m1 = new Menu();
+            Menu m2 = new Menu();
+            Menu m3 = new Menu();
+            Menu m4 = new Menu();
+
+            
+
+
+        }
+        public void Menu()
         {
+            bool continueToRun = true;
+
+            while (continueToRun)
+            {
+                Console.Clear();
+
+                Console.WriteLine("Menue:\n" +
+                    "1. Show current menu\n" +
+                    "2. Search by text\n" +
+                    "3. Add new item\n" +
+                    "4. Remove item\n" +
+                    "5. Exit");
+
+                string userInput = Console.ReadLine();
+
+                switch (userInput)
+                {
+                    case "1":
+                        DisplayAllContents();
+                        break;
+
+                    case "2":
+                        GetContentByTitle();
+                        break;
+
+                    case "3":
+                        AddNewContent();
+                        break;
+
+                    case "4":
+                        RemoveContent();
+                        break;
+
+                    case "exit":
+
+                    case "EXIT":
+
+                    case "5":
+
+                        continueToRun = false;
+
+                        break;
+
+                    default:
+
+                        Console.WriteLine("Please enter a valid selection\n" +
+                            "Press any key to continue...");
+
+                        Console.ReadKey();
+
+                        break;
+
+                }
+            }
             Console.Clear();
-            Console.WriteLine("Partial meal #2 comes with a main meal with no sides");
-            Console.ReadLine();
+
+            Console.WriteLine("Thanks for shopping!");
+
+            Thread.Sleep(2000);
         }
 
-        public static void Buffet()
+
+        private void DisplayAllContents()
         {
-            Console.Clear();
-            Console.WriteLine("The buffet #3 comes with all you can eat for 1 hour");
-            Console.ReadLine();
-        }
+         
 
-        public static void Settings()
+        }
+           
+        private void GetContentByTitle()
         {
-            Console.Clear();
-            Console.WriteLine("Settings");
-            Console.WriteLine("Press [1] to add a item to menu");
-            Console.ReadLine();
-
+            throw new NotImplementedException();
         }
+
+        private void AddNewContent()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void RemoveContent()
+        {
+            throw new NotImplementedException();
+        }
+
+        
     }
 }
-        
-    
+
+
 
