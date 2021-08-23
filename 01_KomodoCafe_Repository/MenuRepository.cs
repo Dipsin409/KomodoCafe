@@ -84,6 +84,16 @@ namespace _01_KomodoCafe_Repository
         public class MenuContentRepository
         {
         }
-      }
+
+        public void DeleteExistingContent(MenuRepo content)
+        {
+            throw new NotImplementedException();
+        }
+
+        public MenuRepo GetContentByTitle(string title)
+        {
+            throw new NotImplementedException();
+        }
+    }
 
 }

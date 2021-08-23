@@ -8,11 +8,14 @@ namespace _01_KomodoCafe
 {
     public class Menu
     {
+       
+
         public string MealName { get; set; }
         public int ProductNumber { get; set; }
         public string ProductDescription { get; set; }
         public List<string> Ingredients { get; set; }
         public double Price { get; set; }
+        public Menu() { }
         public Menu(int productNumber, string productDescription, double price, List<string> ingredients, string mealName)
         {
 
@@ -27,10 +30,10 @@ namespace _01_KomodoCafe
 
         }
 
-        public static implicit operator Menu(_01_KomodoCafe_Console.Menu v)
-        {
-            throw new NotImplementedException();
-        }
+       // public static implicit operator Menu(_01_KomodoCafe_Console.Menu v)
+        //{
+         //   throw new NotImplementedException();
+        //}
 
 
 
