@@ -8,39 +8,84 @@ using System.Threading.Tasks;
 
 namespace _01_KomodoCafe_Repository
 {
-      public class MenuRepo
-      { 
-        protected readonly List<Menu> _menuDirectory = new List<Menu>();
+    // Plain Old C# Object POCO
 
-        public bool ProductName { get; private set; } 
-        //crud create read update delete
-        //create
+
+    public class MenuRepo
+    {
+        public List<Menu> _listOfMenuItems = new List<Menu>();
+        public class MenuContentRepository { }
+
+
+        //Create
         public bool AddContentToDirectory(Menu items)
         {
-            int startingCount = _menuDirectory.Count;
+            int startingCount = _listOfMenuItems.Count;
 
-            _menuDirectory.Add(items);
+            _listOfMenuItems.Add(items);
 
-            bool wasAdded = _menuDirectory.Count > startingCount;
+            bool wasAdded = _listOfMenuItems.Count > startingCount;
             return wasAdded;
-
-            // return _contentDirectory.Count > startingCount;
         }
 
-        //read
-
-        public List<Menu> GetItems()
+        //Read
+        public List<Menu> GetContentList()
         {
-            return _menuDirectory;
+            return _listOfMenuItems;
+        }
+
+        //Update
+        public bool UpdateExistingContent(string originalTitle, Menu newContent)
+        {
+
+            Menu oldContent = GetMealByName(originalTitle);
+            if(oldContent != null)
+            {
+                oldContent.MealName = newContent.MealName;
+                oldContent.ProductNumber = newContent.ProductNumber;
+                oldContent.ProductDescription = newContent.ProductDescription;
+                oldContent.Price = newContent.Price;
+
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+
         }
 
 
+        //Delete
+        public bool DeleteExistingContent(string title)
+        {
+            Menu content = GetMealByName(title);
 
+            if (content == null)
+            {
+                return false;
+            }
+
+            int initialCount = _listOfMenuItems.Count;
+            _listOfMenuItems.Remove(content);
+
+            if (initialCount > _listOfMenuItems.Count)
+            {
+                return true;
+
+            }
+            else
+            {
+                return false;
+            }
+
+        }
 
         public Menu GetMealByName(string mealName)
         {
             //List<Menu>mealNames = new List<Menu>();
-            foreach (Menu items in _menuDirectory)
+            foreach (Menu items in _listOfMenuItems)
             {
                 if (items.MealName == mealName)
                 {
@@ -49,51 +94,27 @@ namespace _01_KomodoCafe_Repository
             }
             return null;
         }
-        //update
 
-        public bool UpdateExistingContent(string originalTitle, Menu newContent)
+        public Menu GetContentByTitle(string title)
         {
-            
-            Menu oldContent = GetMealByName(originalTitle);
-
-            if (oldContent != null)
+            foreach (Menu content in _listOfMenuItems)
             {
-                oldContent.MealName = newContent.MealName;
-                oldContent.ProductNumber = newContent.ProductNumber;
-                oldContent.ProductDescription = newContent.ProductDescription;
-                oldContent.Ingredients = newContent.Ingredients;
-                oldContent.Price = newContent.Price;
-
-
-                return true;
-
+                if (content.MealName == title)
+                {
+                    return content;
+                }
             }
-
-            return false;
+            return null;
         }
 
 
-        //delete
 
-        public bool DeleteExistingContent(Menu existingContent)
-        {
-            bool deleteResult = _menuDirectory.Remove(existingContent);
-            return deleteResult;
 
-        }
-        public class MenuContentRepository
-        {
-        }
 
-        public void DeleteExistingContent(MenuRepo content)
-        {
-            throw new NotImplementedException();
-        }
 
-        public MenuRepo GetContentByTitle(string title)
-        {
-            throw new NotImplementedException();
-        }
     }
 
 }
+
+
+

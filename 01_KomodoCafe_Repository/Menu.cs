@@ -15,6 +15,8 @@ namespace _01_KomodoCafe
         public string ProductDescription { get; set; }
         public List<string> Ingredients { get; set; }
         public double Price { get; set; }
+ 
+
         public Menu() { }
         public Menu(int productNumber, string productDescription, double price, List<string> ingredients, string mealName)
         {

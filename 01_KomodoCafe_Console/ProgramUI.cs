@@ -9,10 +9,7 @@ namespace _01_KomodoCafe_Console
 
     public class ProgramUI
     {
-
-
         private readonly MenuRepo _repo = new MenuRepo();
-
         public int productNumber { get; private set; }
 
         //public string mealName { get; private set; }
@@ -62,7 +59,7 @@ namespace _01_KomodoCafe_Console
                         break;
 
                     case "2":
-                        GetContentByTitle();
+                        LookUpMenuItemByName();
                         break;
 
                     case "3":
@@ -70,7 +67,7 @@ namespace _01_KomodoCafe_Console
                         break;
 
                     case "4":
-                        RemoveContent();
+                        DeleteExistingContent();
                         break;
 
                     case "exit":
@@ -101,23 +98,38 @@ namespace _01_KomodoCafe_Console
             Thread.Sleep(2000);
         }
 
-
-
         public void DisplayAllContents()
         {
             Console.Clear();
             
-
-            
-           
-
-            
         }
 
-        public void GetContentByTitle()
+        public void LookUpMenuItemByName()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Please enter name of item you wish to view... ");
+            string input = Console.ReadLine();
+
+            Menu menu = _repo.GetMealByName(input);
+
+            if (menu.MealName == input)
+            {
+                Console.WriteLine($"Name: {menu.MealName}" +
+                    $"\nDescription: {menu.ProductDescription}" +
+                    $"\nPrice: {menu.Price}" +
+                    $"\n");
+
+
+                Console.WriteLine($"Name: {menu.MealName}");
+
+
+                foreach (string property in menu.Ingredients)
+                {
+                    Console.Write($" {property}");
+                }
+
+            }
         }
+
 
         public void AddNewContent()
         {
@@ -165,58 +177,31 @@ namespace _01_KomodoCafe_Console
             {
                 content.ProductNumber = productNumber;
             }
-
-
         }
 
-
-
-        public void RemoveContent()
+        public void DeleteExistingContent()
         {
             Console.Clear();
             Console.Write("Enter the product to remove: ");
 
             string title = Console.ReadLine();
 
-            MenuRepo content = _repo.GetContentByTitle(title);
+            bool wasRemoved = _repo.DeleteExistingContent(title);
 
-            if (content == null)
+            if (wasRemoved)
             {
-                Console.WriteLine("Content not found :(");
+                Console.WriteLine("Item was removed... ");
             }
             else
             {
-                DisplayContents(content);
-                Console.WriteLine("Do you want to delete this forever? (y/n");
-
-                string answer = Console.ReadLine();
-                if (answer.ToLower() == "y" || answer.ToLower() == "yes")
-                {
-                    _repo.DeleteExistingContent(content);
-                    Console.WriteLine("Product has been perm deleted...");
-                }
-                else
-                {
-                    Console.WriteLine("Disregard...");
-                }
+                Console.WriteLine("Unable to remove... ");
             }
-            ContinueMessage();
-  
-        }
-
-        private void ContinueMessage()
-        {
-            throw new NotImplementedException();
-        }
-
-        private void DisplayContents(MenuRepo content)
-        {
-            throw new NotImplementedException();
         }
     }
-
-
 }
+
+
+
 
 
 

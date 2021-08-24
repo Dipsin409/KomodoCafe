@@ -4,7 +4,7 @@ using System;
 namespace _01_KomodoCafe_Tests
 {
     [TestClass]
-    public class UnitTest1
+    public class MenuContentTests
     {
         [TestMethod]
         public void TestMethod1()
