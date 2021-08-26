@@ -16,21 +16,18 @@ namespace _01_KomodoCafe_Console
 
         public void Run()
         {
+            SeedContent();
             Menu();
         }
 
         public void SeedContent()
         {
-            //Menu m1 = new Menu();
-            //Menu m2 = new Menu();
-            //Menu m3 = new Menu();
-            //Menu m4 = new Menu();
-            //Changed to Below
             Menu m1 = new Menu(1, "Cheese Burger Meal", 7.99, new List<string> { "bun", "cheese", "pickle", "lettuce" }, "Burger Combo");
-            _repo.AddContentToDirectory(m1);
-            Menu m2 = new Menu();
+            Menu m2 = new Menu(2, "Chicken Sandwich Meal", 5.99, new List<string> { "bun", "chicken patty", "lettuce", "mayo" }, "Chicken Combo");
             Menu m3 = new Menu();
             Menu m4 = new Menu();
+            _repo.AddContentToDirectory(m1);
+            _repo.AddContentToDirectory(m2);
 
             Console.WriteLine("Seeding....");
         }
@@ -98,10 +95,18 @@ namespace _01_KomodoCafe_Console
             Thread.Sleep(2000);
         }
 
-        public void DisplayAllContents()
+        void DisplayAllContents()
         {
-            Console.Clear();
-            
+            List<Menu> menuMenu = _repo.GetContentList();
+            foreach (Menu menu in menuMenu)
+            {
+                Console.WriteLine($"Meal Number {menu.ProductNumber}" +
+                    $"Meal Name {menu.MealName}" +
+                    $"Description{menu.ProductDescription}" +
+                    $"Ingredients{menu.Ingredients}" +
+                    $"Price{menu.Price}");
+            }
+            Console.ReadKey();
         }
 
         public void LookUpMenuItemByName()

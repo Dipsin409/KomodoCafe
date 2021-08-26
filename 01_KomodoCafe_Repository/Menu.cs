@@ -20,16 +20,11 @@ namespace _01_KomodoCafe
         public Menu() { }
         public Menu(int productNumber, string productDescription, double price, List<string> ingredients, string mealName)
         {
-
             ProductNumber = productNumber;
             ProductDescription = productDescription;
             Price = price;
             Ingredients = ingredients;
             MealName = mealName;
-
-
-
-
         }
 
        // public static implicit operator Menu(_01_KomodoCafe_Console.Menu v)
